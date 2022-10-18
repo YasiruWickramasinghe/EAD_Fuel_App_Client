@@ -1,5 +1,4 @@
-# App Name
-Fuel App - Client
+# Fuel Management App - Client
 
 ### Module
 SE4040 - Enterprise Application Development
