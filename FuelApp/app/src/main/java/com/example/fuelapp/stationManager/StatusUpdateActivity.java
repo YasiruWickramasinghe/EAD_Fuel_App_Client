@@ -159,7 +159,7 @@ public class StatusUpdateActivity extends AppCompatActivity {
         try {
             RequestQueue requestQueue = Volley.newRequestQueue(this);
             JSONObject jsonBody = new JSONObject();
-            jsonBody.put("stationName", "Malabe");
+            jsonBody.put("stationName", "Tangalla");
             jsonBody.put("stationNo", "2");
             jsonBody.put("stationOwnerName", "Yasiru");
             jsonBody.put("startTime", s_time);
@@ -178,8 +178,6 @@ public class StatusUpdateActivity extends AppCompatActivity {
                         Toast.makeText(StatusUpdateActivity.this, "Status for today is already added", Toast.LENGTH_SHORT).show();
                     }
                     else Toast.makeText(StatusUpdateActivity.this, "Data was submitted", Toast.LENGTH_SHORT).show();
-
-
                 }
             }, new Response.ErrorListener() {
                 @Override

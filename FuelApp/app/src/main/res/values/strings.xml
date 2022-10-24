@@ -2,8 +2,8 @@
     <string name="app_name">Fuel App</string>
 
     <string-array name="types">
-    <item>Petrol</item>
-    <item>Diesel</item>
+        <item>Petrol</item>
+        <item>Diesel</item>
     </string-array>
 
 </resources>

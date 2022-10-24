@@ -91,6 +91,7 @@
         android:textAlignment="center"
         android:textColor="#EAEAEA"
         android:textColorHighlight="#FFFFFF"
+        android:background="@android:color/transparent"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
