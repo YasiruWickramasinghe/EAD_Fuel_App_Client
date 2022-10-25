@@ -42,10 +42,23 @@ import java.util.Locale;
 public class StatusUpdateActivity extends AppCompatActivity {
     String s_time, e_time, t_date,f_type;
     String url = "http://10.0.2.2:5109/api/station-status";
+    String stationNo = "5";
+    String stationOwnerName = "Ammar Yusri";
+    String stationName = "Galle";
+
+    TextView  s_Owner, s_name, s_no;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_status_update);
+
+        s_Owner = findViewById(R.id.txtOwner);
+        s_name = findViewById(R.id.txtStationName);
+        s_no = findViewById(R.id.txtStationNo);
+
+        s_name.setText(stationName);
+        s_Owner.setText(stationOwnerName);
+        s_no.setText(stationNo);
 
         // Submit button
         Button submit = (Button) findViewById(R.id.btnSubmit);
@@ -65,7 +78,7 @@ public class StatusUpdateActivity extends AppCompatActivity {
         //set the Current date
         String date_n = new SimpleDateFormat("yyyy MMM dd ", Locale.getDefault()).format(new Date());
         TextView date  = (TextView) findViewById(R.id.txtDate);
-        date.setText(date_n);
+        date.setText("Date: "+date_n);
         t_date = date_n;
 
 
@@ -159,9 +172,9 @@ public class StatusUpdateActivity extends AppCompatActivity {
         try {
             RequestQueue requestQueue = Volley.newRequestQueue(this);
             JSONObject jsonBody = new JSONObject();
-            jsonBody.put("stationName", "Tangalla");
-            jsonBody.put("stationNo", "2");
-            jsonBody.put("stationOwnerName", "Yasiru");
+            jsonBody.put("stationName", stationName);
+            jsonBody.put("stationNo", stationNo);
+            jsonBody.put("stationOwnerName", stationOwnerName);
             jsonBody.put("startTime", s_time);
             jsonBody.put("endTime", e_time);
             jsonBody.put("date", t_date);

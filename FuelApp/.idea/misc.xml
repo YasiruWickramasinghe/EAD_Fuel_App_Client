@@ -3,9 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/SLIIT/4th Year (2022)/2nd Sem/EAD/Assignment1/EAD_Fuel_App_Client/FuelApp/app/src/main/res/drawable/custom_edit_text.xml" value="0.112" />
         <entry key="..\:/SLIIT/4th Year (2022)/2nd Sem/EAD/Assignment1/EAD_Fuel_App_Client/FuelApp/app/src/main/res/layout/activity_main.xml" value="0.16210739614994935" />
         <entry key="..\:/SLIIT/4th Year (2022)/2nd Sem/EAD/Assignment1/EAD_Fuel_App_Client/FuelApp/app/src/main/res/layout/activity_station_details.xml" value="0.19322916666666667" />
-        <entry key="..\:/SLIIT/4th Year (2022)/2nd Sem/EAD/Assignment1/EAD_Fuel_App_Client/FuelApp/app/src/main/res/layout/activity_status_update.xml" value="0.33" />
+        <entry key="..\:/SLIIT/4th Year (2022)/2nd Sem/EAD/Assignment1/EAD_Fuel_App_Client/FuelApp/app/src/main/res/layout/activity_status_update.xml" value="0.22" />
       </map>
     </option>
   </component>
