@@ -22,7 +22,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".StationDetails"
+            android:name=".StationDetailsActivity"
             android:exported="true" >
         </activity>
         <activity
