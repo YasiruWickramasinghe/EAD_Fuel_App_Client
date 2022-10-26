@@ -14,7 +14,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Fuel Queue"
-        android:textColor="#fff"
+        android:textColor="#000"
         android:textStyle="bold"
         android:textSize="21dp"
         android:layout_marginTop="10dp"/>
@@ -25,7 +25,7 @@
         android:layout_height="wrap_content"
         android:text="Welocome to fuel queue"
         android:textSize="11dp"
-        android:textColor="#fff"
+        android:textColor="#000"
         android:layout_below="@+id/welcome"/>
 
     <androidx.cardview.widget.CardView
@@ -52,7 +52,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
-                    android:text="vehicle No:"
+                    android:text="Vehicle No:"
                     android:textColor="#454545"
                     android:textSize="16sp"/>
                 <TextView
@@ -157,7 +157,7 @@
                 <Button
                     android:id="@+id/arrivalSubmit"
                     android:layout_width="100dp"
-                    android:layout_height="45dp"
+                    android:layout_height="50dp"
                     android:textSize="12sp"
                     android:layout_marginLeft="30dp"
                     app:cornerRadius="30dp"
@@ -197,7 +197,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:textSize="14sp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="10dp"
                 app:cornerRadius="30dp"
                 android:text="Exit Before Pump"
                 android:layout_below="@+id/departureTimeBox"/>
@@ -207,7 +207,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:textSize="14sp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="5dp"
                 app:cornerRadius="30dp"
                 android:text="Exit After Pump"
                 android:layout_below="@+id/beforeSubmit"/>

@@ -29,7 +29,6 @@ import com.android.volley.toolbox.HttpHeaderParser;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.fuelapp.R;
-import com.example.fuelapp.stationManager.StatusUpdateActivity;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -44,9 +43,12 @@ public class QueueManagementActivity extends AppCompatActivity {
 
     String arrival_time, departure_time, currentDate;
     String url = "http://10.0.2.2:5109/api/Queue";
-    String vehicleNo = "ABC4512";
-    String stationName = "Matara";
+    String vehicleNo = "MVC4812";
+    String vehicleType = "Car";
+    String stationId = "0012";
+    String stationName = "Colombo";
     String fuelType = "Petrol";
+    String pumpStatus = "AfterPump";
 
     TextView  vehicle_no, station_name, fuel_type;
 
@@ -72,14 +74,15 @@ public class QueueManagementActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                ArrivalSubmit();
-
-//                if(arrivalTime == null && departureTime == null || arrivalTime == null) {
-//                    Toast.makeText(getApplicationContext(), "ArrivalTime field is Required", Toast.LENGTH_SHORT).show();
-//                }
-//                else{
-//                    Submit();
-//                }
+                if(arrival_time == null) {
+                    Toast.makeText(getApplicationContext(), "ArrivalTime field is Required", Toast.LENGTH_SHORT).show();
+                }
+                else if(departure_time != null) {
+                    Toast.makeText(getApplicationContext(), "DepartureTime field is Cannot be Filled", Toast.LENGTH_SHORT).show();
+                }
+                else{
+                     ArrivalSubmit();
+                }
             }
         });
 
@@ -166,66 +169,68 @@ public class QueueManagementActivity extends AppCompatActivity {
     //Arrival Submit
     private void ArrivalSubmit() {
 
-//        try {
-//            RequestQueue requestQueue = Volley.newRequestQueue(this);
-//            JSONObject jsonBody = new JSONObject();
-//            jsonBody.put("stationName", stationName);
-//            jsonBody.put("stationNo", stationNo);
-//            jsonBody.put("stationOwnerName", stationOwnerName);
-//            jsonBody.put("startTime", s_time);
-//            jsonBody.put("endTime", e_time);
-//            jsonBody.put("date", t_date);
-//            jsonBody.put("fuelType", f_type);
-//            jsonBody.put("availability", "Yes");
-//
-//            final String mRequestBody = jsonBody.toString();
-//
-//            StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
-//                @Override
-//                public void onResponse(String response) {
-//                    Log.v("TEST", response);
-//                    if(response.equals("201")){
-//                        Toast.makeText(StatusUpdateActivity.this, "Status for today is already added", Toast.LENGTH_SHORT).show();
-//                    }
-//                    else Toast.makeText(StatusUpdateActivity.this, "Data was submitted", Toast.LENGTH_SHORT).show();
-//                }
-//            }, new Response.ErrorListener() {
-//                @Override
-//                public void onErrorResponse(VolleyError error) {
-//                    Log.e("LOG_RESPONSE", error.toString());
-//                    Toast.makeText(StatusUpdateActivity.this, "Something went wrong", Toast.LENGTH_SHORT).show();
-//                }
-//            }) {
-//                @Override
-//                public String getBodyContentType() {
-//                    return "application/json; charset=utf-8";
-//                }
-//
-//                @Override
-//                public byte[] getBody() throws AuthFailureError {
-//                    try {
-//                        return mRequestBody == null ? null : mRequestBody.getBytes("utf-8");
-//                    } catch (UnsupportedEncodingException uee) {
-//                        VolleyLog.wtf("Unsupported Encoding while trying to get the bytes of %s using %s", mRequestBody, "utf-8");
-//                        return null;
-//                    }
-//                }
-//
-//                @Override
-//                protected Response<String> parseNetworkResponse(NetworkResponse response) {
-//                    String responseString = "";
-//                    if (response != null) {
-//                        responseString = String.valueOf(response.statusCode);
-//                    }
-//                    return Response.success(responseString, HttpHeaderParser.parseCacheHeaders(response));
-//                }
-//            };
-//
-//            requestQueue.add(stringRequest);
-//        }
-//        catch (JSONException e) {
-//            e.printStackTrace();
-//        }
+        try {
+            RequestQueue requestQueue = Volley.newRequestQueue(this);
+            JSONObject jsonBody = new JSONObject();
+            jsonBody.put("vehicleNo", vehicleNo);
+            jsonBody.put("vehicleType", vehicleType);
+            jsonBody.put("stationId", stationId);
+            jsonBody.put("stationName", stationName);
+            jsonBody.put("fuelType", fuelType);
+            jsonBody.put("arrivalTime", arrival_time);
+            jsonBody.put("departTime", departure_time);
+            jsonBody.put("currentDate", currentDate);
+            jsonBody.put("pumpStatus", pumpStatus);
+
+
+            final String mRequestBody = jsonBody.toString();
+
+            StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+                @Override
+                public void onResponse(String response) {
+                    Log.v("TESTQUEUE", response);
+                    if(response.equals("201")){
+                        Toast.makeText(QueueManagementActivity.this, "Queue Arrival Already Inserted", Toast.LENGTH_SHORT).show();
+                    }
+                    else Toast.makeText(QueueManagementActivity.this, "Arrival Time submitted", Toast.LENGTH_SHORT).show();
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Log.e("LOG_RESPONSE", error.toString());
+                    Toast.makeText(QueueManagementActivity.this, "Something went wrong", Toast.LENGTH_SHORT).show();
+                }
+            }) {
+                @Override
+                public String getBodyContentType() {
+                    return "application/json; charset=utf-8";
+                }
+
+                @Override
+                public byte[] getBody() throws AuthFailureError {
+                    try {
+                        return mRequestBody == null ? null : mRequestBody.getBytes("utf-8");
+                    } catch (UnsupportedEncodingException uee) {
+                        VolleyLog.wtf("Unsupported Encoding while trying to get the bytes of %s using %s", mRequestBody, "utf-8");
+                        return null;
+                    }
+                }
+
+                @Override
+                protected Response<String> parseNetworkResponse(NetworkResponse response) {
+                    String responseString = "";
+                    if (response != null) {
+                        responseString = String.valueOf(response.statusCode);
+                    }
+                    return Response.success(responseString, HttpHeaderParser.parseCacheHeaders(response));
+                }
+            };
+
+            requestQueue.add(stringRequest);
+        }
+        catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 
     private void DepartureBeforeSubmit() {
